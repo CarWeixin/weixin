@@ -1,3 +1,4 @@
+#encoding: utf-8
 class TokensController < ApplicationController
 require 'base64'
 require 'digest/sha1'
@@ -42,14 +43,15 @@ require 'nokogiri'
 		connection = Faraday.new( :url => "https://qyapi.weixin.qq.com/" )
 		response = connection.get("cgi-bin/gettoken?corpid=wx703900237aee25ec&corpsecret=FEuzM1J0hAUC_8Jck7MJpYmHbRmYXAMmoYX4siDBLx7H3_P1ybJaW2vmR8rcMVit", ).body
 
+		token = JSON.parse(response)["access_token"]
 
 		json = {
 		:touser => "xuranci",
 		:msgtype => "text",
 		:agentid => "5",
-		:text =>{
-				:content => "您有新的订单!"
-			}  
+		:text => {
+			:content => "您有新的订单!"
+			}
 		}.to_json	
  
 		connection = Faraday.new( :url => "https://qyapi.weixin.qq.com/" )
@@ -57,7 +59,8 @@ require 'nokogiri'
 		response = connection.post( "/cgi-bin/message/send?access_token=" + token, json).body		
 		puts response
 		
-		render "车辆预定成功"		
+		render(:text => "车辆预定成功"	)
+
 	end
 
 

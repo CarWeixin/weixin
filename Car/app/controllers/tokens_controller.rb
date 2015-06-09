@@ -48,7 +48,7 @@ require 'nokogiri'
 		token = JSON.parse(response)["access_token"]
 
 		json = {
-		:touser => "xuranci",
+		:touser => "xuranci|luguangyao",
 		:msgtype => "text",
 		:agentid => "5",
 		:text => {

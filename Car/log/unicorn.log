@@ -1,0 +1,38 @@
+I, [2015-06-09T20:12:43.049161 #19762]  INFO -- : Refreshing Gem list
+I, [2015-06-09T20:12:46.363788 #19762]  INFO -- : listening on addr=0.0.0.0:12306 fd=11
+/home/showcase/.rvm/gems/ruby-1.9.3-p448@global/gems/bundler-1.3.5/lib/bundler/rubygems_integration.rb:214:in `block in replace_gem': Please install the sqlite3 adapter: `gem install activerecord-sqlite3-adapter` (sqlite3 is not part of the bundle. Add it to Gemfile.) (LoadError)
+	from /home/showcase/.rvm/gems/ruby-1.9.3-p448/gems/activerecord-3.2.8/lib/active_record/connection_adapters/sqlite3_adapter.rb:3:in `<top (required)>'
+	from /home/showcase/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.2.8/lib/active_support/dependencies.rb:251:in `require'
+	from /home/showcase/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.2.8/lib/active_support/dependencies.rb:251:in `block in require'
+	from /home/showcase/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.2.8/lib/active_support/dependencies.rb:236:in `load_dependency'
+	from /home/showcase/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.2.8/lib/active_support/dependencies.rb:251:in `require'
+	from /home/showcase/.rvm/gems/ruby-1.9.3-p448/gems/activerecord-3.2.8/lib/active_record/connection_adapters/abstract/connection_specification.rb:50:in `resolve_hash_connection'
+	from /home/showcase/.rvm/gems/ruby-1.9.3-p448/gems/activerecord-3.2.8/lib/active_record/connection_adapters/abstract/connection_specification.rb:41:in `resolve_string_connection'
+	from /home/showcase/.rvm/gems/ruby-1.9.3-p448/gems/activerecord-3.2.8/lib/active_record/connection_adapters/abstract/connection_specification.rb:25:in `spec'
+	from /home/showcase/.rvm/gems/ruby-1.9.3-p448/gems/activerecord-3.2.8/lib/active_record/connection_adapters/abstract/connection_specification.rb:129:in `establish_connection'
+	from /home/showcase/.rvm/gems/ruby-1.9.3-p448/gems/activerecord-3.2.8/lib/active_record/railtie.rb:82:in `block (2 levels) in <class:Railtie>'
+	from /home/showcase/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.2.8/lib/active_support/lazy_load_hooks.rb:36:in `instance_eval'
+	from /home/showcase/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.2.8/lib/active_support/lazy_load_hooks.rb:36:in `execute_hook'
+	from /home/showcase/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.2.8/lib/active_support/lazy_load_hooks.rb:43:in `block in run_load_hooks'
+	from /home/showcase/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.2.8/lib/active_support/lazy_load_hooks.rb:42:in `each'
+	from /home/showcase/.rvm/gems/ruby-1.9.3-p448/gems/activesupport-3.2.8/lib/active_support/lazy_load_hooks.rb:42:in `run_load_hooks'
+	from /home/showcase/.rvm/gems/ruby-1.9.3-p448/gems/activerecord-3.2.8/lib/active_record/base.rb:721:in `<top (required)>'
+	from /home/showcase/car/weixin/Car/config/unicorn.rb:29:in `block in reload'
+	from /home/showcase/.rvm/gems/ruby-1.9.3-p448/gems/unicorn-4.9.0/lib/unicorn/http_server.rb:523:in `call'
+	from /home/showcase/.rvm/gems/ruby-1.9.3-p448/gems/unicorn-4.9.0/lib/unicorn/http_server.rb:523:in `spawn_missing_workers'
+	from /home/showcase/.rvm/gems/ruby-1.9.3-p448/gems/unicorn-4.9.0/lib/unicorn/http_server.rb:140:in `start'
+	from /home/showcase/.rvm/gems/ruby-1.9.3-p448/gems/unicorn-4.9.0/bin/unicorn:126:in `<top (required)>'
+	from /home/showcase/.rvm/gems/ruby-1.9.3-p448/bin/unicorn:19:in `load'
+	from /home/showcase/.rvm/gems/ruby-1.9.3-p448/bin/unicorn:19:in `<main>'
+	from /home/showcase/.rvm/gems/ruby-1.9.3-p448/bin/ruby_noexec_wrapper:14:in `eval'
+	from /home/showcase/.rvm/gems/ruby-1.9.3-p448/bin/ruby_noexec_wrapper:14:in `<main>'
+I, [2015-06-09T20:15:45.600237 #19808]  INFO -- : Refreshing Gem list
+I, [2015-06-09T20:15:47.464328 #19808]  INFO -- : listening on addr=0.0.0.0:12306 fd=11
+I, [2015-06-09T20:15:47.981705 #19812]  INFO -- : worker=0 ready
+I, [2015-06-09T20:15:47.983691 #19815]  INFO -- : worker=1 ready
+I, [2015-06-09T20:15:47.985636 #19808]  INFO -- : master process ready
+I, [2015-06-09T20:15:47.989213 #19818]  INFO -- : worker=2 ready
+I, [2015-06-09T20:15:47.996504 #19821]  INFO -- : worker=3 ready
+180.160.159.21 - - [09/Jun/2015 20:16:06] "GET %2Findex.html HTTP/1.1" 200 5906 0.8324
+180.160.159.21 - - [09/Jun/2015 20:16:07] "GET /rails.png HTTP/1.1" 200 6646 0.6258
+180.160.159.21 - - [09/Jun/2015 20:16:07] "GET %2Ffavicon.ico HTTP/1.1" 200 - 0.6134

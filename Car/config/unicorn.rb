@@ -1,4 +1,4 @@
-APP_PATH = "/home/showcase/weixin"
+APP_PATH = "/home/showcase/car/weixin/Car"
 
 worker_processes 4
 working_directory "#{APP_PATH}"

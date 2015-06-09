@@ -1,4 +1,6 @@
 #encoding: utf-8
+#decoding: utf-8
+
 class TokensController < ApplicationController
 require 'base64'
 require 'digest/sha1'
@@ -52,8 +54,10 @@ require 'nokogiri'
 		:text => {
 			:content => "您有新的订单!"
 			}
-		}.to_json	
+		}
  
+		json = JSON.generate(json.as_json)
+
 		connection = Faraday.new( :url => "https://qyapi.weixin.qq.com/" )
 
 		response = connection.post( "/cgi-bin/message/send?access_token=" + token, json).body		

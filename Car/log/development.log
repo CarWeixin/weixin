@@ -238,3 +238,62 @@ Processing by TokensController#post as */*
 WARNING: Can't verify CSRF token authenticity
   Rendered text template (0.0ms)
 Completed 200 OK in 165ms (Views: 5.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/tokens/post" for 127.0.0.1 at 2015-06-10 00:44:24 +0800
+Connecting to database specified by database.yml
+Processing by TokensController#post as */*
+WARNING: Can't verify CSRF token authenticity
+  Rendered text template (0.0ms)
+Completed 200 OK in 210ms (Views: 43.4ms | ActiveRecord: 0.0ms)
+Connecting to database specified by database.yml
+
+
+Started POST "/tokens/post" for 127.0.0.1 at 2015-06-10 01:01:13 +0800
+Connecting to database specified by database.yml
+Processing by TokensController#post as */*
+WARNING: Can't verify CSRF token authenticity
+  Rendered text template (0.0ms)
+Completed 200 OK in 269ms (Views: 42.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/tokens/post" for 127.0.0.1 at 2015-06-10 01:02:58 +0800
+Processing by TokensController#post as */*
+WARNING: Can't verify CSRF token authenticity
+  Rendered text template (0.0ms)
+Completed 200 OK in 222ms (Views: 28.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/tokens/post" for 127.0.0.1 at 2015-06-10 01:05:12 +0800
+Processing by TokensController#post as */*
+WARNING: Can't verify CSRF token authenticity
+  Rendered text template (0.0ms)
+Completed 200 OK in 176ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/tokens/post" for 127.0.0.1 at 2015-06-10 01:11:23 +0800
+Processing by TokensController#post as */*
+WARNING: Can't verify CSRF token authenticity
+  Rendered text template (0.0ms)
+Completed 200 OK in 553ms (Views: 1.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/tokens/post" for 127.0.0.1 at 2015-06-10 01:13:46 +0800
+Processing by TokensController#post as */*
+WARNING: Can't verify CSRF token authenticity
+Completed 500 Internal Server Error in 5089ms
+
+JSON::GeneratorError (only generation of JSON objects or arrays allowed):
+  app/controllers/tokens_controller.rb:59:in `post'
+
+
+  Rendered /home/think/.rvm/gems/ruby-1.9.3-p448@rails3/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /home/think/.rvm/gems/ruby-1.9.3-p448@rails3/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.6ms)
+  Rendered /home/think/.rvm/gems/ruby-1.9.3-p448@rails3/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (77.8ms)
+
+
+Started POST "/tokens/post" for 127.0.0.1 at 2015-06-10 01:14:35 +0800
+Processing by TokensController#post as */*
+WARNING: Can't verify CSRF token authenticity
+  Rendered text template (0.0ms)
+Completed 200 OK in 188ms (Views: 1.9ms | ActiveRecord: 0.0ms)

@@ -6,13 +6,17 @@ require 'base64'
 require 'digest/sha1'
 require 'nokogiri'
 
-	# def get
-	# 		sign = params[ :msg_signature]
-	# 		time = params[ :timestamp]
-	# 		nonce = params[ :nonce]
-	# 		echostr = params[ :echostr]
+	def get
+			sign = params[ :msg_signature]
+			time = params[ :timestamp]
+			nonce = params[ :nonce]
+			echostr = params[ :echostr]
 
-	# 		token = "huyindianzishangwu"
+	 		token = "huyindianzishangwu"
+
+	 		AESKey = "LJXG9kp4yuCVtkBtTfYRVmUBP5vHYTK4bUL29SMeYxu"
+
+	 		corpID = "wx7ebbb056cec7e96d"
 
 	# 		AESKey = Base64.decode64(EncodeingAESKey + "=" )
 
@@ -38,7 +42,7 @@ require 'nokogiri'
 	# 		    render    
 	# 			return true
 	# 		end
-	# end
+	end
 
 	def post
 

@@ -4,8 +4,17 @@ class Prpcrypt < ActiveRecord::Base
     status = 200
     text        = Base64.decode64(text)
     text        = handle_cipher(:decrypt, aes_key, text)
+
+    Rails.logger.debug("#{__FILE__}:#{__LINE__}  ------ #{text}")
+
     result      = PKCS7Encoder.decode(text)
+    Rails.logger.debug("#{__FILE__}:#{__LINE__}  ------ #{result}")
+    
     content     = result[16...result.length]
+
+    Rails.logger.debug("#{__FILE__}:#{__LINE__}  ------ #{content}")
+    
+
     len_list    = content[0...4].unpack("N")
     xml_len     = len_list[0]
     xml_content = content[4...4 + xml_len]

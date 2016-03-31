@@ -1,4 +1,6 @@
 #encoding: utf-8
+#decoding: utf-8
+
 class TokensController < ApplicationController
 require 'base64'
 require 'digest/sha1'
@@ -10,14 +12,14 @@ require 'nokogiri'
 			nonce = params[ :nonce]
 			echostr = params[ :echostr]
 
-	 		token = "huyindianzishangwu"
+	 		token = "huyindianzikeji"
 
 	 		key = "LJXG9kp4yuCVtkBtTfYRVmUBP5vHYTK4bUL29SMeYxu"
 
 	 		corpID = "wx7ebbb056cec7e96d"
 
 	 		content, status = Prpcrypt.decrypt( key, echostr, corpID ) 
-      		
+
 	# 		AESKey = Base64.decode64(EncodeingAESKey + "=" )
 
 	# 		AESKey = "\x74\x92\xc5\x10\x12\x84\xa7\x18\x73\x58\x92\xed\xdc\x96\xd4\x73\x87\x5d\x03\x67\x16\x60\x47\xcd\xc0\xe3\x58\x5b\xda\xee\x19\xa9" 

@@ -349,3 +349,25 @@ Connecting to database specified by database.yml
 Connecting to database specified by database.yml
 Connecting to database specified by database.yml
 Connecting to database specified by database.yml
+
+
+Started GET "/assets/rails.png" for 127.0.0.1 at 2016-03-31 23:16:13 +0800
+Connecting to database specified by database.yml
+Served asset /rails.png - 200 OK (2ms)
+
+
+Started GET "/tokens/get?echostr=sWpFntWFftRUvapCHewaQR08UqbyCAEZwdGhGGhWCCM9ue96+dIkJJ7IPCFpLzy6esArropkRilRQSGWNGB63Q==" for 127.0.0.1 at 2016-03-31 23:16:29 +0800
+Processing by TokensController#get as HTML
+  Parameters: {"echostr"=>"sWpFntWFftRUvapCHewaQR08UqbyCAEZwdGhGGhWCCM9ue96 dIkJJ7IPCFpLzy6esArropkRilRQSGWNGB63Q=="}
+Completed 500 Internal Server Error in 3ms
+
+OpenSSL::Cipher::CipherError (data not multiple of block length):
+  app/models/prpcrypt.rb:40:in `final'
+  app/models/prpcrypt.rb:40:in `handle_cipher'
+  app/models/prpcrypt.rb:6:in `decrypt'
+  app/controllers/tokens_controller.rb:21:in `get'
+
+
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-3.2.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.9ms)

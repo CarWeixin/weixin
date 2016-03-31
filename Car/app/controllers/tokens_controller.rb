@@ -1,6 +1,4 @@
 #encoding: utf-8
-#decoding: utf-8
-
 class TokensController < ApplicationController
 require 'base64'
 require 'digest/sha1'
@@ -18,7 +16,7 @@ require 'nokogiri'
 
 	 		corpID = "wx7ebbb056cec7e96d"
 
-	 		content, status = Prpcrypt.decrypt( key , echostr, corpID ) 
+	 		content, status = Prpcrypt.decrypt( key, echostr, corpID ) 
       		
 	# 		AESKey = Base64.decode64(EncodeingAESKey + "=" )
 
@@ -44,7 +42,7 @@ require 'nokogiri'
 	# 		    render    	
 	# 			return true
 	# 		end
-		render text: content, status: status
+		render :text => content
 	end
 
 	def post

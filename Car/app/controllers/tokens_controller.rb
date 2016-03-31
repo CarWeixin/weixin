@@ -14,11 +14,13 @@ require 'nokogiri'
 
 	 		token = "huyindianzikeji"
 
-	 		key = "LJXG9kp4yuCVtkBtTfYRVmUBP5vHYTK4bUL29SMeYxu"
+	 		key = "d2l1ZHczNDVqdXd1aWpzbmNoODc4d2tzamhpdXllc3I"
 
 	 		corpID = "wx7ebbb056cec7e96d"
 
-	 		content, status = Prpcrypt.decrypt( key, echostr, corpID ) 
+			aeskey = Base64.decode64( key + "=" )	 		
+
+	 		content, status = Prpcrypt.decrypt( aeskey , echostr, corpID ) 
 
 	# 		AESKey = Base64.decode64(EncodeingAESKey + "=" )
 

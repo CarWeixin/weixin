@@ -17,6 +17,7 @@ require 'nokogiri'
 	 		key = "d2l1ZHczNDVqdXd1aWpzbmNoODc4d2tzamhpdXllc3I"
 
 	 		corpID = "wx7ebbb056cec7e96d"
+	 		corpsecret = "3sryz04qwCwaQG_sECT_iqUgHjqRkvzPN7RWSKUjysScTbNGHpYd6E9Zc31fXJkZ"
 
 			aeskey = Base64.decode64( key + "=" )	 		
 
@@ -30,9 +31,53 @@ require 'nokogiri'
 
 				content, status = Prpcrypt.decrypt( aeskey , xml[ :Encrypt] , corpID)
 
-				content = ActiveSupport::JSON.decode(content)
+				content = Hash.from_xml(content)
 
-				render :text => content
+				content = content["xml"]
+
+				if content["MsgType"] == "text" 
+
+					connection = Faraday.new( :url => "https://qyapi.weixin.qq.com/" )	
+					response = connection.get("cgi-bin/gettoken",{:corpid => corpID , :corpsecret => corpsecret}).body				
+					access_token = JSON.parse(response)["access_token"]
+
+					if content["Content"] == "绑定" 
+
+
+						msg = "请输出18位身份证号码"
+
+						
+					elsif content["Content"].size == 18
+
+						connection = Faraday.new( :url => "https://www.showks.cn:15577/" )
+						msg = connection.get("accounts/bind_weixin",{:weixinID => content["FromUserName"] , :id_card => content["Content"]}).body					
+
+					elsif content["Content"] == "获取二维码"
+
+							
+
+					end
+
+					json = {
+					:touser => content["FromUserName"],
+					:msgtype => "text",
+					:agentid => 3,
+					:text => {
+						:content => msg
+						}
+					}
+
+					json = JSON.generate(json.as_json)
+
+					puts json 
+
+					connection = Faraday.new( :url => "https://qyapi.weixin.qq.com/" )
+					response = connection.post("cgi-bin/message/send?access_token="+ access_token, json).body					
+
+
+					render :text => response
+				end
+				
 			end
 	end
 

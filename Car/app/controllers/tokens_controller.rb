@@ -5,6 +5,7 @@ class TokensController < ApplicationController
 require 'base64'
 require 'digest/sha1'
 require 'nokogiri'
+require 'net/http'
 
 	def get
 			sign = params[ :msg_signature]
@@ -35,30 +36,60 @@ require 'nokogiri'
 
 				content = content["xml"]
 
-				if content["MsgType"] == "text" 
+				connection = Faraday.new( :url => "https://qyapi.weixin.qq.com/" )	
+				response = connection.get("cgi-bin/gettoken",{:corpid => corpID , :corpsecret => corpsecret}).body				
+				access_token = JSON.parse(response)["access_token"]
 
-					connection = Faraday.new( :url => "https://qyapi.weixin.qq.com/" )	
-					response = connection.get("cgi-bin/gettoken",{:corpid => corpID , :corpsecret => corpsecret}).body				
-					access_token = JSON.parse(response)["access_token"]
+				if content["MsgType"] == "event" 
+	
 
-					if content["Content"] == "绑定" 
+					if content["EventKey"] == "绑定" 
 
 
 						msg = "请输出18位身份证号码"
+						msgtype = "text"
+				
 
-						
-					elsif content["Content"].size == 18
+					elsif content["EventKey"] == "获取二维码"
 
-						connection = Faraday.new( :url => "https://www.showks.cn:15577/" )
-						msg = connection.get("accounts/bind_weixin",{:weixinID => content["FromUserName"] , :id_card => content["Content"]}).body					
+						msgtype = "image"
 
-					elsif content["Content"] == "获取二维码"
+						connection = Faraday.new( :url => "http://my.tv.sohu.com/" )
+						image = connection.post("user/a/wvideo/getQRCode.do?width=400&height=400&text=asjdoiasjfiuahf",).body					
 
-							
+						#puts image.class
+
+						# connection = Faraday.new( :url => "https://qyapi.weixin.qq.com/" )
+						# response = connection.post("cgi-bin/media/upload?access_token="+ access_token + "&type=image", {:media => image }).body
+
+						#url = URI.parse('https://qyapi.weixin.qq.com/cgi-bin/media/upload?access_token='+ access_token + '&type=image')
+
+						#connection = Faraday.new( :url => "https://qyapi.weixin.qq.com/" )
+						#response = connection.post("cgi-bin/media/get?access_token="+ access_token + "&media_id=" + "1r6dxwlJMWepFNvbQt983z5pmK-_9p1jMQUW6zyuz-u3XDR0hjv5tioP2rxqmrlqjVZSgMA-hWPARuH3XduBG2g",).body	
+
+						#render :text => response
+						msg = "1r6dxwlJMWepFNvbQt983z5pmK-_9p1jMQUW6zyuz-u3XDR0hjv5tioP2rxqmrlqjVZSgMA-hWPARuH3XduBG2g"
 
 					end
 
-					json = {
+					
+			 
+				elsif content["MsgType"] == "text"
+					
+					if content["Content"].size == 18				
+
+						connection = Faraday.new( :url => "http://www.showks.cn:15577/" )
+						response = connection.post("accounts/bind_weixin", { :id_card => content["Content"], :weixinID => content["FromUserName"] } ).body	
+
+						msg = "绑定成功" if response.to_i == 200
+						msg = "错误的身份证信息" if response.to_i == 404
+
+						msgtype = "text"
+					end
+				end
+
+				if msgtype == "text"
+				json = {
 					:touser => content["FromUserName"],
 					:msgtype => "text",
 					:agentid => 3,
@@ -66,18 +97,25 @@ require 'nokogiri'
 						:content => msg
 						}
 					}
+				else
+					json = {
+					:touser => content["FromUserName"],
+					:msgtype => "image",
+					:agentid => 3,
+					:image => {
+						:media_id => msg
+						}
+					}
+				end	
+
 
 					json = JSON.generate(json.as_json)
-
-					puts json 
 
 					connection = Faraday.new( :url => "https://qyapi.weixin.qq.com/" )
 					response = connection.post("cgi-bin/message/send?access_token="+ access_token, json).body					
 
 
-					render :text => response
-				end
-				
+				render :text => response
 			end
 	end
 

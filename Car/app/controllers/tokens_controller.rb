@@ -30,6 +30,8 @@ require 'nokogiri'
 
 				content, status = Prpcrypt.decrypt( aeskey , xml[ :Encrypt] , corpID)
 
+				content = ActiveSupport::JSON.decode(content)
+
 				render :text => content
 			end
 	end

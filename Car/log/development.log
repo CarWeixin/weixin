@@ -688,3 +688,10 @@ Processing by TokensController#get as HTML
 ************ 674337da5c8e603f   12345123451234512345123wx7ebbb056cec7e96d*************
   Rendered text template (0.0ms)
 Completed 200 OK in 3ms (Views: 0.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tokens/get?msg_signature=01357d8f34f4a8c805b768385a4986daaa38a90b&timestamp=1459442012&nonce=1914219703&echostr=ZqpLR6cMhKll0IKsRREl7U8ELwzMp1QbbGQE93zdinv27EEMJQX38ccKZ4LNBA4WueyvIJapXhX9QFuXhhSJJQ%3D%3D" for 127.0.0.1 at 2016-04-01 14:34:21 +0800
+Processing by TokensController#get as HTML
+  Parameters: {"msg_signature"=>"01357d8f34f4a8c805b768385a4986daaa38a90b", "timestamp"=>"1459442012", "nonce"=>"1914219703", "echostr"=>"ZqpLR6cMhKll0IKsRREl7U8ELwzMp1QbbGQE93zdinv27EEMJQX38ccKZ4LNBA4WueyvIJapXhX9QFuXhhSJJQ=="}
+  Rendered text template (0.0ms)
+Completed 200 OK in 4ms (Views: 0.6ms | ActiveRecord: 0.0ms)

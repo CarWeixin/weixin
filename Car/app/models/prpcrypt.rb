@@ -3,7 +3,6 @@ class Prpcrypt < ActiveRecord::Base
 
 	def self.decrypt(aes_key, text, corpid)
     status = 200
-    Rails.logger.debug("************ #{text}*************")
     text        = Base64.decode64(text)
     text        = handle_cipher(:decrypt, aes_key, text)
     result      = PKCS7Encoder.decode(text)
@@ -13,8 +12,6 @@ class Prpcrypt < ActiveRecord::Base
     xml_content = content[4...4 + xml_len]
     from_corpid = content[xml_len+4...content.size]
     # TODO: refactor
-
-    Rails.logger.debug("************ #{result}*************")
 
     if corpid != from_corpid
       Rails.logger.debug("#{__FILE__}:#{__LINE__} Failure because #{corpid} != #{from_corpid}")

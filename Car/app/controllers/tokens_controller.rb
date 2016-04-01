@@ -20,33 +20,18 @@ require 'nokogiri'
 
 			aeskey = Base64.decode64( key + "=" )	 		
 
-	 		content, status = Prpcrypt.decrypt( aeskey , echostr, corpID ) 
+			if !echostr.nil?
 
-	# 		AESKey = Base64.decode64(EncodeingAESKey + "=" )
+		 		content, status = Prpcrypt.decrypt( aeskey , echostr, corpID ) 
+				
+				render :text => content
+			else
+				xml = params[ :xml]
 
-	# 		AESKey = "\x74\x92\xc5\x10\x12\x84\xa7\x18\x73\x58\x92\xed\xdc\x96\xd4\x73\x87\x5d\x03\x67\x16\x60\x47\xcd\xc0\xe3\x58\x5b\xda\xee\x19\xa9" 
+				content, status = Prpcrypt.decrypt( aeskey , xml[ :Encrypt] , corpID)
 
-	# 		AESKey = AEKKey[0..15]
-
-	# 		msg_encrypt = echostr
-
-	# 		array = [token , time , nonce, msg_encrypt]
-
-	# 		array = array.sort 
-
-	# 		str = array[0] + array[1] + array[2] + array[3]
-
-	# 		str = Digest::SHA1.hexdigest(str)
-
-	# 				Base64.decode64(msg_encrypt)
-
-	# 		#render(:text => str)
-		
-	# 		if str == sign 
-	# 		    render    	
-	# 			return true
-	# 		end
-		render :text => content
+				render :text => content
+			end
 	end
 
 	def post
